@@ -72,7 +72,7 @@ function RobotSimulation() {
               <img src={`${process.env.PUBLIC_URL}` + chimeImg} alt="chime" />
             </div>
           </Building>
-          <section>
+          <section className="sub_objects">
             <div className="subBell" onClick={handleMoveToBell}>
               <img src={`${process.env.PUBLIC_URL}` + bellImg} alt="bell" />{' '}
               <span>호출벨</span>

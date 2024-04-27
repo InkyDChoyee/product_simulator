@@ -12,7 +12,7 @@ function DashBoard() {
       <nav>
         <p>판매량, 사용자 피드백, 성능 지표의 확인이 가능합니다</p>
       </nav>
-      <section className="content">
+      <section className="dashboard_content">
         <Sales />
         <div>
           <Score />

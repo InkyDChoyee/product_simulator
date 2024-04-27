@@ -31,15 +31,16 @@ const InteractiveWebPage = () => {
       <nav>
         <p>빨강, 파랑, 녹색으로 색상 선택이 가능합니다</p>
       </nav>
-      <section className="content">
+      <section className="interactive_content">
         <div className="imgBox">
           {selectedColor && (
             <img
               className={`${showImage ? 'show' : 'hidden'}`}
-              src={require(`${
+              src={
+                process.env.PUBLIC_URL +
                 colors.find((color) => color.p_color === selectedColor)
                   ?.imageURL
-              }`)}
+              }
               alt="product_img"
             />
           )}

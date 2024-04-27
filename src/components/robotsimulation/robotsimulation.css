@@ -107,7 +107,7 @@ nav {
     width: 30px;
 }
 
-section {
+.sub_objects {
     height: 60%;
     width: 20%;
     padding: 10px;
@@ -115,11 +115,11 @@ section {
     border-radius: 15px;
     box-shadow: 3px 3px 5px #ccc;
 }
-section div {
+.sub_objects div {
     margin-top: 30px;
 }
 
-section button {
+.sub_objects button {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
