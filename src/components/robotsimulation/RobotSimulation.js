@@ -3,9 +3,9 @@ import Building from './component/Building';
 import Robot from './component/Robot';
 import { findPath } from './util/pathfinding';
 import './robotsimulation.css';
-const elevatorImg = '/resources/elevator.png';
-const bellImg = '/resources/bell.png';
-const chimeImg = '/resources/chime.png';
+const elevatorImg = '/resources/robotsimulation/elevator.png';
+const bellImg = '/resources/robotsimulation/bell.png';
+const chimeImg = '/resources/robotsimulation/chime.png';
 
 function RobotSimulation() {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0 });

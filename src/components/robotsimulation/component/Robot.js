@@ -1,5 +1,5 @@
 import React from 'react';
-const robot = '/resources/robot.png';
+const robot = '/resources/robotsimulation/robot.png';
 
 const Robot = ({ position }) => {
   return (
