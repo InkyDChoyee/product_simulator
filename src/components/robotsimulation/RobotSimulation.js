@@ -1,0 +1,99 @@
+import React, { useState } from 'react';
+import Building from './component/Building';
+import Robot from './component/Robot';
+import { findPath } from './util/pathfinding';
+import './robotsimulation.css';
+const elevatorImg = '/resources/elevator.png';
+const bellImg = '/resources/bell.png';
+const chimeImg = '/resources/chime.png';
+
+function RobotSimulation() {
+  const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0 });
+  const destination = { x: 9, y: 9 };
+
+  const handleMoveToDevice = async (devicePosition) => {
+    const pathToDevice = await findPath(
+      { x: 0, y: 0 },
+      [devicePosition],
+      destination,
+      []
+    );
+
+    for (const position of pathToDevice) {
+      setRobotPosition(position);
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+  };
+
+  const handleMoveToBell = () => handleMoveToDevice({ x: 2, y: 3 });
+  const handleMoveToElevator = () => handleMoveToDevice({ x: 5, y: 5 });
+  const handleMoveToChime = () => handleMoveToDevice({ x: 8, y: 2 });
+
+  const handleMoveRobot = async () => {
+    const totalPath = await findPath(
+      { x: 0, y: 0 },
+      [
+        { x: 2, y: 3 },
+        { x: 5, y: 5 },
+        { x: 8, y: 2 },
+      ],
+      destination,
+      []
+    );
+
+    for (const position of totalPath) {
+      setRobotPosition(position);
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+  };
+
+  return (
+    <div className="robotsimulation">
+      <div className="titleBox">
+        <h2>자율주행 로봇 시뮬레이터</h2>
+      </div>
+      <nav>
+        <p>원하는 경유지를 선택하여 로봇을 이동시킬 수 있습니다</p>
+      </nav>
+      <div className="content">
+        <div className="buildingBox">
+          <Building>
+            <Robot position={robotPosition} />
+            <div className="bell" onClick={handleMoveToBell}>
+              <img src={`${process.env.PUBLIC_URL}` + bellImg} alt="bell" />
+            </div>
+            <div className="elevator" onClick={handleMoveToElevator}>
+              <img
+                src={`${process.env.PUBLIC_URL}` + elevatorImg}
+                alt="elevator"
+              />
+            </div>
+            <div className="chime" onClick={handleMoveToChime}>
+              <img src={`${process.env.PUBLIC_URL}` + chimeImg} alt="chime" />
+            </div>
+          </Building>
+          <section>
+            <div className="subBell" onClick={handleMoveToBell}>
+              <img src={`${process.env.PUBLIC_URL}` + bellImg} alt="bell" />{' '}
+              <span>호출벨</span>
+            </div>
+            <div className="subElevator" onClick={handleMoveToElevator}>
+              <img
+                src={`${process.env.PUBLIC_URL}` + elevatorImg}
+                alt="elevator"
+              />{' '}
+              <span>엘레베이터</span>
+            </div>
+            <div className="subChime" onClick={handleMoveToChime}>
+              <img src={`${process.env.PUBLIC_URL}` + chimeImg} alt="chime" />
+              <span>차임벨</span>
+            </div>
+            <button onClick={handleMoveRobot}>모든 경유지 경유하기</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default RobotSimulation;

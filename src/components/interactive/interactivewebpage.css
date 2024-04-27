@@ -43,7 +43,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("./resources/sirbot.png");
+    background-image: url("../../../public/resources/interactive/sirbot.png");
     background-size: 68vh;
     background-position: center;
     background-color: #fff;
